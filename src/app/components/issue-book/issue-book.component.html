@@ -25,7 +25,7 @@
                 id="isbn" formControlName="isbn">
                 <option value="" disabled>-- Choose a book --</option>
                 <option *ngFor="let b of libraryService.books" [value]="b.isbn">
-                  {{ b.bookName }} by {{ b.author }} &nbsp;(ISBN: {{ b.isbn }})
+                  {{ b.name }} by {{ b.author }} &nbsp;(ISBN: {{ b.isbn }})
                 </option>
               </select>
               <div class="invalid-feedback">Please select a book.</div>

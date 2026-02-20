@@ -73,6 +73,26 @@ src/
   styles.scss
 ```
 
+## Screenshots
+
+### Login
+![Login](screenshots/logingpage.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Add Book
+![Add Book](screenshots/addbook.png)
+
+### View Books
+![View Books](screenshots/viewbook.png)
+
+### Issue Book
+![Issue Book](screenshots/issuebook.png)
+
+### Delete Book
+![Delete Book](screenshots/deletebook.png)
+
 ## Routes
 
 | Path           | Component        |
