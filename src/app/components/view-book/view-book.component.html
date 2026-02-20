@@ -1,0 +1,35 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2>View Books</h2>
+  <a class="btn btn-outline-primary" routerLink="/dashboard">&#8592; Back</a>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Publication</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Branch</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books">
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publication }}</td>
+            <td>{{ book.qty }}</td>
+            <td>&#8377; {{ book.price }}</td>
+            <td><span class="badge" style="background:#4472C4">{{ book.branch }}</span></td>
+            <td>{{ book.details }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

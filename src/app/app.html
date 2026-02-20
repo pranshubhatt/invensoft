@@ -1,0 +1,20 @@
+<div class="app-shell">
+
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark app-navbar px-3">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <span class="nav-icon">&#128218;</span>
+      <span class="nav-title">Digital Library Management System</span>
+    </a>
+    <div class="ms-auto d-flex align-items-center gap-2">
+      <a class="btn btn-outline-light btn-sm px-3" routerLink="/login">Login</a>
+      <a class="btn btn-light btn-sm px-3 fw-semibold" style="color:#2F5597" routerLink="/dashboard">Dashboard</a>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="container-fluid py-4 px-4">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

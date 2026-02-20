@@ -1,0 +1,25 @@
+.login-page {
+  min-height: calc(100vh - 62px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f0f2f8;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 520px;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 40px 44px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.hint-text {
+  font-size: 18px;
+  color: #000000;
+}

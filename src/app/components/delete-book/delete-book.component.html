@@ -1,0 +1,56 @@
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2>Delete Book</h2>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary" type="button"
+      [disabled]="selectedIsbns.size === 0"
+      (click)="deleteSelected()">
+      &#128465; Delete Selected ({{ selectedIsbns.size }})
+    </button>
+    <a class="btn btn-outline-primary" routerLink="/dashboard">&#8592; Back</a>
+  </div>
+</div>
+
+<div class="alert alert-success" *ngIf="deleteSuccess">
+  &#10003; Selected book(s) deleted successfully.
+</div>
+
+<div class="alert alert-info" *ngIf="books.length === 0">
+  No books available in the library.
+</div>
+
+<div class="card" *ngIf="books.length > 0">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle mb-0">
+        <thead>
+          <tr>
+            <th style="width:50px;">
+              <input class="form-check-input" type="checkbox"
+                [checked]="isAllSelected()"
+                (change)="toggleAll($any($event.target).checked)" />
+            </th>
+            <th>ISBN</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Publication</th>
+            <th>Branch</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books" [class.table-warning]="selectedIsbns.has(book.isbn)">
+            <td>
+              <input class="form-check-input" type="checkbox"
+                [checked]="selectedIsbns.has(book.isbn)"
+                (change)="toggleSelect(book.isbn, $any($event.target).checked)" />
+            </td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.publication }}</td>
+            <td><span class="badge" style="background:#4472C4">{{ book.branch }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

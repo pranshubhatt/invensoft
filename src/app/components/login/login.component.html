@@ -1,0 +1,59 @@
+<div class="login-page">
+  <div class="login-wrapper">
+
+    <div class="text-center mb-4">
+      <span style="font-size:60px;">&#128218;</span>
+      <h2 class="mt-2" style="font-size:30px;">Digital Library</h2>
+      <p style="color:#000; font-size:18px;">Please login to continue</p>
+    </div>
+
+    <div class="login-card">
+
+      <!-- Invalid credentials alert -->
+      <div class="alert alert-danger py-2" *ngIf="loginFailed">
+        Invalid username or password. Please try again.
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          <input
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.controls.username.touched && form.controls.username.invalid"
+            id="username"
+            type="text"
+            formControlName="username"
+            placeholder="Enter username"
+            autocomplete="off"
+          />
+          <div class="invalid-feedback">Username is required.</div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label" for="password">Password</label>
+          <input
+            class="form-control form-control-lg"
+            [class.is-invalid]="form.controls.password.touched && form.controls.password.invalid"
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter password"
+            autocomplete="off"
+          />
+          <div class="invalid-feedback">Password is required.</div>
+        </div>
+
+        <div class="d-grid mt-2">
+          <button class="btn btn-primary btn-lg" type="submit">Login</button>
+        </div>
+
+      </form>
+
+      <div class="mt-4 text-center hint-text">
+        Demo credentials &nbsp;&mdash;&nbsp; Username: <strong>admin</strong> &nbsp;|&nbsp; Password: <strong>admin123</strong>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-8">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2>Add Student</h2>
+      <a class="btn btn-outline-primary btn-sm" routerLink="/dashboard">&#8592; Back to Dashboard</a>
+    </div>
+
+    <div class="alert alert-success" *ngIf="saveSuccess">
+      &#10003; Student added successfully! Redirecting...
+    </div>
+    <div class="alert alert-danger" *ngIf="duplicateError">
+      A student with this Roll No. already exists.
+    </div>
+
+    <div class="card">
+      <div class="card-body p-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label" for="rollNo">Roll No. <span style="color:red">*</span></label>
+              <input class="form-control"
+                [class.is-invalid]="form.controls.rollNo.touched && form.controls.rollNo.invalid"
+                id="rollNo" type="text" formControlName="rollNo" placeholder="e.g. IT-201" />
+              <div class="invalid-feedback">Roll No. is required (letters, numbers, hyphen).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="name">Full Name <span style="color:red">*</span></label>
+              <input class="form-control"
+                [class.is-invalid]="form.controls.name.touched && form.controls.name.invalid"
+                id="name" type="text" formControlName="name" placeholder="e.g. Rohit Sharma" />
+              <div class="invalid-feedback">Name must be 3-60 alphabets only.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="branch">Branch <span style="color:red">*</span></label>
+              <select class="form-select"
+                [class.is-invalid]="form.controls.branch.touched && form.controls.branch.invalid"
+                id="branch" formControlName="branch">
+                <option value="" disabled>-- Select Branch --</option>
+                <option *ngFor="let b of branches" [value]="b">{{ b }}</option>
+              </select>
+              <div class="invalid-feedback">Please select a branch.</div>
+            </div>
+
+          </div>
+          <hr class="my-4" />
+          <div class="d-flex gap-2 justify-content-end">
+            <a class="btn btn-outline-primary" routerLink="/dashboard">Cancel</a>
+            <button class="btn btn-primary" type="submit">&#128190; Save Student</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

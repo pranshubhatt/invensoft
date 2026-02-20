@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-xl-7 col-lg-8">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2>Issue Book</h2>
+      <a class="btn btn-outline-primary btn-sm" routerLink="/dashboard">&#8592; Back to Dashboard</a>
+    </div>
+
+    <div class="alert alert-success" *ngIf="saveSuccess">
+      &#10003; Book issued successfully! Redirecting...
+    </div>
+    <div class="alert alert-danger" *ngIf="alreadyIssued">
+      This book is already issued to that student and not yet returned.
+    </div>
+
+    <div class="card">
+      <div class="card-body p-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row g-3">
+
+            <div class="col-md-12">
+              <label class="form-label" for="isbn">Select Book <span style="color:red">*</span></label>
+              <select class="form-select"
+                [class.is-invalid]="form.controls.isbn.touched && form.controls.isbn.invalid"
+                id="isbn" formControlName="isbn">
+                <option value="" disabled>-- Choose a book --</option>
+                <option *ngFor="let b of libraryService.books" [value]="b.isbn">
+                  {{ b.bookName }} by {{ b.author }} &nbsp;(ISBN: {{ b.isbn }})
+                </option>
+              </select>
+              <div class="invalid-feedback">Please select a book.</div>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label" for="rollNo">Select Student <span style="color:red">*</span></label>
+              <select class="form-select"
+                [class.is-invalid]="form.controls.rollNo.touched && form.controls.rollNo.invalid"
+                id="rollNo" formControlName="rollNo">
+                <option value="" disabled>-- Choose a student --</option>
+                <option *ngFor="let s of libraryService.students" [value]="s.rollNo">
+                  {{ s.name }} &nbsp;({{ s.rollNo }}, {{ s.branch }})
+                </option>
+              </select>
+              <div class="invalid-feedback">Please select a student.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="issuedOn">Issue Date <span style="color:red">*</span></label>
+              <input class="form-control"
+                [class.is-invalid]="form.controls.issuedOn.touched && form.controls.issuedOn.invalid"
+                id="issuedOn" type="date" formControlName="issuedOn" />
+              <div class="invalid-feedback">Issue date is required.</div>
+            </div>
+
+          </div>
+          <hr class="my-4" />
+          <div class="d-flex gap-2 justify-content-end">
+            <a class="btn btn-outline-primary" routerLink="/dashboard">Cancel</a>
+            <button class="btn btn-primary" type="submit">&#128218; Issue Book</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

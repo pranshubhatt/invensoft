@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-xl-9 col-lg-10">
+
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h2>Add New Book</h2>
+      <a class="btn btn-outline-primary btn-sm" routerLink="/dashboard">&#8592; Back to Dashboard</a>
+    </div>
+
+    <!-- Success Alert -->
+    <div class="alert alert-success d-flex align-items-center gap-2" *ngIf="saveSuccess">
+      <strong>&#10003; Book saved successfully!</strong> Redirecting to View Books...
+    </div>
+
+    <!-- Duplicate Error -->
+    <div class="alert alert-danger" *ngIf="duplicateError">
+      A book with this ISBN already exists. Please use a different ISBN.
+    </div>
+
+    <div class="card">
+      <div class="card-body p-4">
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label" for="isbn">ISBN Number <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.isbn.touched && form.controls.isbn.invalid"
+                id="isbn" type="text" formControlName="isbn" placeholder="e.g. 97801234" />
+              <div class="invalid-feedback">ISBN must be 5 to 50 digits (numbers only).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="name">Book Name <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.name.touched && form.controls.name.invalid"
+                id="name" type="text" formControlName="name" placeholder="e.g. Clean Code" />
+              <div class="invalid-feedback">Name must be 5 to 50 alphabets only.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="author">Author <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.author.touched && form.controls.author.invalid"
+                id="author" type="text" formControlName="author" placeholder="e.g. Robert Martin" />
+              <div class="invalid-feedback">Author must be alphabets only (max 50 characters).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label" for="publication">Publication <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.publication.touched && form.controls.publication.invalid"
+                id="publication" type="text" formControlName="publication" placeholder="e.g. Prentice Hall" />
+              <div class="invalid-feedback">Publication must be 5 to 50 alphabets only.</div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label" for="details">Details <span style="color:red">*</span></label>
+              <textarea class="form-control" [class.is-invalid]="form.controls.details.touched && form.controls.details.invalid"
+                id="details" rows="3" formControlName="details" placeholder="Short description (5 to 250 characters)"></textarea>
+              <div class="invalid-feedback">Details must be 5 to 250 characters (letters and numbers allowed).</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label" for="qty">Qty. <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.qty.touched && form.controls.qty.invalid"
+                id="qty" type="number" formControlName="qty" placeholder="e.g. 3" min="1" max="5" />
+              <div class="invalid-feedback">Qty must be a number between 1 and 5.</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label" for="price">Price <span style="color:red">*</span></label>
+              <input class="form-control" [class.is-invalid]="form.controls.price.touched && form.controls.price.invalid"
+                id="price" type="number" formControlName="price" placeholder="e.g. 250.00" min="5" step="0.01" />
+              <div class="invalid-feedback">Price must be a number ≥ 5 (up to 2 decimal places).</div>
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label" for="branch">Branch <span style="color:red">*</span></label>
+              <select class="form-select" [class.is-invalid]="form.controls.branch.touched && form.controls.branch.invalid"
+                id="branch" formControlName="branch">
+                <option value="" disabled>-- Select Branch --</option>
+                <option *ngFor="let branch of branches" [value]="branch">{{ branch }}</option>
+              </select>
+              <div class="invalid-feedback">Please select a branch.</div>
+            </div>
+
+          </div>
+
+          <hr class="my-4" />
+
+          <div class="d-flex gap-2 justify-content-end">
+            <a class="btn btn-outline-primary" routerLink="/dashboard">Cancel</a>
+            <button class="btn btn-primary" type="submit">&#128190; Save Book</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

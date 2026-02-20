@@ -1,0 +1,112 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* ===== Global Design Specs =====
+   Font    : Calibri (Body)
+   Headings: #2F5597
+   Buttons : #4472C4
+   Labels  : #000000
+   Font-sz : 18px
+================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Calibri, 'Segoe UI', Arial, sans-serif !important;
+	font-size: 18px !important;
+	background-color: #f0f2f8;
+	color: #212529;
+	margin: 0;
+	padding: 0;
+}
+
+/* Override Bootstrap default font so Calibri is applied everywhere */
+.btn, input, select, textarea, table, th, td, label, p, span, a {
+	font-family: Calibri, 'Segoe UI', Arial, sans-serif !important;
+	font-size: 18px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	color: #2F5597 !important;
+	font-family: Calibri, 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Labels */
+label,
+.form-label {
+	color: #000000 !important;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+/* Primary Buttons */
+.btn-primary {
+	background-color: #4472C4 !important;
+	border-color: #4472C4 !important;
+	color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+	background-color: #2F5597 !important;
+	border-color: #2F5597 !important;
+}
+
+/* Outline Primary Buttons */
+.btn-outline-primary {
+	color: #4472C4 !important;
+	border-color: #4472C4 !important;
+	background-color: transparent !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+	background-color: #4472C4 !important;
+	border-color: #4472C4 !important;
+	color: #ffffff !important;
+}
+
+/* Table */
+.table thead th {
+	background-color: #2F5597;
+	color: #ffffff;
+	font-size: 17px;
+}
+
+.table tbody tr:hover {
+	background-color: #e8eef8;
+}
+
+/* Cards */
+.card {
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.card-body {
+	padding: 20px 24px;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+	font-family: Calibri, 'Segoe UI', Arial, sans-serif !important;
+	font-size: 18px !important;
+	border-radius: 4px;
+}
+
+.form-control:focus,
+.form-select:focus {
+	border-color: #4472C4;
+	box-shadow: 0 0 0 0.2rem rgba(68,114,196,0.25);
+}
+
+/* Sidebar nav buttons */
+.sidebar-btn {
+	text-align: left;
+	font-size: 16px;
+}

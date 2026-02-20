@@ -1,0 +1,85 @@
+<div class="page-wrapper">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h2>Library Report</h2>
+    <a class="btn btn-outline-primary btn-sm" routerLink="/dashboard">&#8592; Back to Dashboard</a>
+  </div>
+
+  <!-- Summary cards -->
+  <div class="row g-3 mb-4">
+    <div class="col-sm-6 col-xl-3">
+      <div class="stat-card">
+        <div class="stat-icon">&#128218;</div>
+        <div class="stat-value">{{ totalBooks }}</div>
+        <div class="stat-label">Total Books</div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="stat-card">
+        <div class="stat-icon">&#128101;</div>
+        <div class="stat-value">{{ totalStudents }}</div>
+        <div class="stat-label">Total Students</div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="stat-card">
+        <div class="stat-icon">&#128196;</div>
+        <div class="stat-value">{{ activeIssued }}</div>
+        <div class="stat-label">Currently Issued</div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="stat-card">
+        <div class="stat-icon">&#9989;</div>
+        <div class="stat-value">{{ totalReturned }}</div>
+        <div class="stat-label">Returned</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full issued book history -->
+  <div class="card">
+    <div class="card-header fw-semibold">Complete Issued Book History</div>
+    <div class="card-body p-0">
+      <div *ngIf="allIssued.length === 0" class="text-center text-muted py-5">
+        No records found.
+      </div>
+      <div class="table-responsive" *ngIf="allIssued.length > 0">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Book Name</th>
+              <th>Author</th>
+              <th>ISBN</th>
+              <th>Student</th>
+              <th>Roll No.</th>
+              <th>Issued On</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of allIssued; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ r.bookName }}</td>
+              <td>{{ r.author }}</td>
+              <td>{{ r.isbn }}</td>
+              <td>{{ r.studentName }}</td>
+              <td>{{ r.rollNo }}</td>
+              <td>{{ r.issuedOn }}</td>
+              <td>
+                <span class="badge"
+                  [class.bg-success]="r.returned"
+                  [class.bg-warning]="!r.returned"
+                  [class.text-dark]="!r.returned">
+                  {{ r.returned ? 'Returned' : 'Issued' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
